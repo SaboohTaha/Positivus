@@ -1,0 +1,58 @@
+---
+const services = [
+  {
+    title: "Web Development",
+    description: "Custom web applications built with modern frameworks like Astro, React, and Next.js for blazing fast performance.",
+    icon: "code"
+  },
+  {
+    title: "UI/UX Design",
+    description: "User-centric design that balances aesthetics with functionality to create delightful digital experiences.",
+    icon: "palette"
+  },
+  {
+    title: "Digital Strategy",
+    description: "Data-driven insights to guide your digital transformation and maximize ROI across all channels.",
+    icon: "chart"
+  },
+  {
+    title: "Mobile Apps",
+    description: "Native and cross-platform mobile applications that keep your users engaged on the go.",
+    icon: "mobile"
+  },
+  {
+    title: "E-Commerce",
+    description: "Scalable online stores designed to convert visitors into loyal customers with seamless checkout flows.",
+    icon: "shopping-bag"
+  },
+  {
+    title: "Cloud Solutions",
+    description: "Secure and scalable cloud infrastructure setup and management for your growing business needs.",
+    icon: "cloud"
+  }
+];
+---
+
+<section id="services" class="py-24 bg-slate-50">
+  <div class="layout-padding">
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <h2 class="text-3xl md:text-5xl font-bold text-slate-900 mb-6">Our Services</h2>
+      <p class="text-lg text-slate-600">We offer a comprehensive suite of digital services to help you dominate your market.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {services.map((service) => (
+        <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-shadow duration-300 border border-slate-100 group">
+          <div class="w-12 h-12 bg-indigo-50 rounded-xl flex items-center justify-center text-indigo-600 mb-6 group-hover:scale-110 transition-transform">
+            <!-- Icon placeholder - simpler than importing lucide temporarily -->
+            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-slate-900 mb-3">{service.title}</h3>
+          <p class="text-slate-600 leading-relaxed">{service.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

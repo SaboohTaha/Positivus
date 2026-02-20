@@ -1,0 +1,55 @@
+---
+const team = [
+  {
+    name: "Alex Morgan",
+    role: "CEO & Founder",
+    bio: "Visionary leader with 15 years of industry experience.",
+    imageColor: "bg-blue-200"
+  },
+  {
+    name: "Sarah Chen",
+    role: "Creative Director",
+    bio: "Award-winning designer passionate about user-centric experiences.",
+    imageColor: "bg-purple-200"
+  },
+  {
+    name: "Michael Ross",
+    role: "Tech Lead",
+    bio: "Full-stack expert specializing in scalable architecture.",
+    imageColor: "bg-green-200"
+  },
+  {
+    name: "Jessica Wu",
+    role: "Marketing Head",
+    bio: "Growth strategist who turns data into actionable insights.",
+    imageColor: "bg-orange-200"
+  }
+];
+---
+
+<section id="team" class="py-24 bg-white">
+  <div class="layout-padding">
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <h2 class="text-3xl md:text-5xl font-bold text-slate-900 mb-6">Meet The Team</h2>
+      <p class="text-lg text-slate-600">The talented individuals behind our success stories.</p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      {team.map((member) => (
+        <div class="group text-center">
+          <div class={`w-full aspect-square rounded-2xl ${member.imageColor} mb-6 overflow-hidden relative shadow-md group-hover:shadow-xl transition-all duration-300`}>
+            <!-- Placeholder for team image: simple gradient/color block -->
+            <div class="absolute inset-0 bg-slate-200 mix-blend-multiply opacity-20 group-hover:opacity-0 transition-opacity"></div>
+            <!-- Simple SVG Avatar Placeholder -->
+            <div class="w-full h-full flex items-center justify-center text-slate-400 group-hover:scale-105 transition-transform duration-500">
+               <svg class="w-24 h-24" fill="currentColor" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+            </div>
+          </div>
+          <h3 class="text-xl font-bold text-slate-900 mb-1">{member.name}</h3>
+          <p class="text-indigo-600 font-medium mb-3">{member.role}</p>
+          <p class="text-slate-500 text-sm">{member.bio}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

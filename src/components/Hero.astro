@@ -1,0 +1,125 @@
+---
+import heroSrc from "../assets/svgs/hero_section.svg?url";
+import amazonSrc from "../assets/svgs/company/amazon.svg?url";
+import dribbleSrc from "../assets/svgs/company/dribble.svg?url";
+import hubspotSrc from "../assets/svgs/company/hubspot.svg?url";
+import notionSrc from "../assets/svgs/company/notion.svg?url";
+import netflixSrc from "../assets/svgs/company/netflix.svg?url";
+import zoomSrc from "../assets/svgs/company/zoom.svg?url";
+
+const logos = [
+    { src: amazonSrc, alt: "Amazon", width: 124.11 },
+    { src: dribbleSrc, alt: "Dribble", width: 126.37 },
+    { src: hubspotSrc, alt: "HubSpot", width: 128.63 },
+    { src: notionSrc, alt: "Notion", width: 145.55 },
+    { src: netflixSrc, alt: "Netflix", width: 125.24 },
+    { src: zoomSrc, alt: "Zoom", width: 110.57 },
+];
+---
+
+<section id="hero" class="w-full bg-white overflow-hidden">
+    <!-- ── MAIN HERO ROW ────────────────────────────────────── -->
+    <div
+        class="flex flex-row justify-between items-start w-full mx-auto box-border pt-[60px] pb-0 px-[100px] max-w-[1440px] min-h-[515px]"
+    >
+        <!-- LEFT COLUMN -->
+        <div class="flex flex-col items-start gap-[35px] shrink-0 w-[531px]">
+            <h1
+                class="m-0 w-[531px] font-sans font-medium text-[60px] leading-[77px] text-black"
+            >
+                Navigating the digital landscape for success
+            </h1>
+
+            <p
+                class="m-0 w-[498px] font-sans font-normal text-[20px] leading-[28px] text-black"
+            >
+                Our digital marketing agency helps businesses grow and succeed
+                online through a range of services including SEO, PPC, social
+                media marketing, and content creation.
+            </p>
+
+            <a
+                href="#contact"
+                class="inline-flex items-center justify-center no-underline whitespace-nowrap px-[35px] py-[20px] gap-[10px] bg-[#191A23] rounded-[14px] font-sans font-normal text-[20px] leading-[28px] text-white transition-all duration-200 hover:opacity-85 hover:-translate-y-0.5"
+            >
+                Book a consultation
+            </a>
+        </div>
+
+        <!-- RIGHT COLUMN — hero illustration SVG -->
+        <div class="shrink-0 relative w-[600.46px] h-[515px]">
+            <img
+                src={heroSrc}
+                alt=""
+                aria-hidden="true"
+                class="block w-full h-full object-contain"
+            />
+        </div>
+    </div>
+
+    <!-- ── LOGOTYPES ROW ─────────────────────────────────────
+       Figma: flex-row | justify-content space-between
+              padding 0 100px | max-width 1440px | height 48px
+  ──────────────────────────────────────────────────────── -->
+    <div
+        class="flex flex-row justify-between items-center w-full mx-auto box-border px-[100px] max-w-[1440px] h-[48px] mt-[60px] mb-[60px]"
+    >
+        {
+            logos.map((logo) => (
+                <img
+                    src={logo.src}
+                    alt={logo.alt}
+                    height="48"
+                    style={`width:${logo.width}px; mix-blend-mode:luminosity;`}
+                    class="block object-contain shrink-0"
+                />
+            ))
+        }
+    </div>
+</section>
+
+<style>
+    /* Responsive — custom pixel widths can't be fully expressed in Tailwind */
+    @media (max-width: 1100px) {
+        #hero > div:first-child {
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 40px 0 !important;
+            gap: 40px;
+        }
+        #hero h1,
+        #hero p {
+            width: 100% !important;
+        }
+        #hero .shrink-0.relative {
+            width: 100% !important;
+            max-width: 560px;
+            height: auto !important;
+            aspect-ratio: 600 / 515;
+        }
+        /* Logo row wraps on smaller screens */
+        #hero > div:last-child {
+            flex-wrap: wrap;
+            height: auto !important;
+            gap: 24px;
+            justify-content: center;
+            padding: 0 40px !important;
+        }
+    }
+    @media (max-width: 600px) {
+        #hero h1 {
+            font-size: 38px !important;
+            line-height: 50px !important;
+        }
+        #hero p {
+            font-size: 17px !important;
+        }
+        #hero > div:first-child {
+            padding: 32px 20px 0 !important;
+        }
+        #hero > div:last-child {
+            padding: 0 20px !important;
+            gap: 16px;
+        }
+    }
+</style>

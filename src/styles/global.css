@@ -1,0 +1,63 @@
+@import "tailwindcss";
+
+:root {
+  --color-brand-primary: #4F46E5;
+  /* Indigo 600 */
+  --color-brand-secondary: #EC4899;
+  /* Pink 500 */
+  --color-bg-dark: #0F172A;
+  /* Slate 900 */
+  --color-bg-light: #F8FAFC;
+  /* Slate 50 */
+  --color-text-main: #1E293B;
+  /* Slate 800 */
+  --color-text-muted: #64748B;
+  /* Slate 500 */
+}
+
+@theme {
+  --font-sans: 'Space Grotesk', system-ui, sans-serif;
+  --font-display: 'Space Grotesk', system-ui, sans-serif;
+
+  --spacing-container-padding: 100px;
+}
+
+/* Global scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  @apply bg-slate-50 text-slate-900 antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-display);
+  @apply font-bold tracking-tight;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-slate-100;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-slate-400 rounded-full hover:bg-slate-500 transition-colors;
+}
+
+/* Container Utility with fixed padding as requested */
+.layout-padding {
+  @apply px-[20px] md:px-[100px];
+  max-width: 100%;
+  margin: 0 auto;
+}

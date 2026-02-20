@@ -1,0 +1,133 @@
+---
+import logoSrc from "../assets/svgs/positivitus_logo.svg?url";
+
+const links = [
+    { text: "About us", href: "#about" },
+    { text: "Services", href: "#services" },
+    { text: "Use Cases", href: "#case-studies" },
+    { text: "Pricing", href: "#pricing" },
+    { text: "Blog", href: "#blog" },
+];
+---
+
+<!-- 
+  Figma nav: height 68px | padding 0 100px | max-width 1440px
+  justify-content space-between | align-items center
+-->
+<nav
+    id="main-nav"
+    class="sticky top-0 z-50 w-full bg-white/90 backdrop-blur-md"
+>
+    <!-- Inner row -->
+    <div
+        class="flex flex-row justify-between items-center w-full mx-auto box-border h-[68px] px-[100px] max-w-[1440px]"
+    >
+        <!-- LEFT: Logo -->
+        <a
+            href="/"
+            aria-label="Positivitus home"
+            class="shrink-0 flex items-center"
+        >
+            <img
+                src={logoSrc}
+                alt="Positivitus"
+                class="block object-contain w-[219.54px] h-[36px]"
+            />
+        </a>
+
+        <!-- RIGHT: Links + CTA — desktop only, gap 40px -->
+        <div class="hidden md:flex flex-row items-center gap-[40px]">
+            {
+                links.map((link) => (
+                    <a
+                        href={link.href}
+                        class="font-sans font-normal text-[20px] leading-[28px] text-black
+                 whitespace-nowrap no-underline transition-opacity duration-150 hover:opacity-60"
+                    >
+                        {link.text}
+                    </a>
+                ))
+            }
+
+            <!-- Request a Quote button: border #191A23, radius 14px, padding 20px 35px -->
+            <a
+                href="#contact"
+                id="request-quote-btn"
+                class="inline-flex items-center justify-center whitespace-nowrap no-underline box-border px-[35px] py-[20px] gap-[10px] border border-[#191A23] rounded-[14px] font-sans font-normal text-[20px] leading-[28px] text-black transition-colors duration-200 hover:bg-[#191A23] hover:text-white"
+            >
+                Request a Quote
+            </a>
+        </div>
+
+        <!-- MOBILE: Hamburger button (visible only below md) -->
+        <button
+            id="mobile-menu-toggle"
+            class="flex md:hidden items-center justify-center bg-transparent border-0 cursor-pointer p-1 text-slate-800 hover:text-black transition-colors focus:outline-none"
+            aria-label="Toggle menu"
+            aria-expanded="false"
+        >
+            <svg
+                class="w-7 h-7"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+            >
+                <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+        </button>
+    </div>
+
+    <!-- MOBILE DRAWER — hidden by default, JS adds/removes 'hidden' and 'flex' -->
+    <div
+        id="mobile-menu"
+        class="hidden flex-col gap-5 px-6 pb-6 pt-4 bg-white border-t border-slate-200"
+        aria-hidden="true"
+    >
+        {
+            links.map((link) => (
+                <a
+                    href={link.href}
+                    class="font-sans font-normal text-[20px] leading-[28px] text-black
+               no-underline transition-opacity duration-150 hover:opacity-60"
+                >
+                    {link.text}
+                </a>
+            ))
+        }
+
+        <a
+            href="#contact"
+            class="inline-flex items-center justify-center w-full no-underline box-border px-[28px] py-[14px] gap-[10px] border border-[#191A23] rounded-[14px] font-sans font-normal text-[20px] leading-[28px] text-black transition-colors duration-200 hover:bg-[#191A23] hover:text-white"
+        >
+            Request a Quote
+        </a>
+    </div>
+</nav>
+
+<script>
+    const toggle = document.getElementById("mobile-menu-toggle");
+    const drawer = document.getElementById("mobile-menu") as HTMLElement | null;
+
+    toggle?.addEventListener("click", () => {
+        const isOpen = drawer?.classList.contains("flex");
+        // Toggle between hidden and flex
+        drawer?.classList.toggle("hidden", isOpen);
+        drawer?.classList.toggle("flex", !isOpen);
+        toggle.setAttribute("aria-expanded", String(!isOpen));
+        drawer?.setAttribute("aria-hidden", String(!!isOpen));
+    });
+
+    // Close drawer on any link click inside it
+    drawer?.querySelectorAll("a").forEach((a) => {
+        a.addEventListener("click", () => {
+            drawer.classList.add("hidden");
+            drawer.classList.remove("flex");
+            toggle?.setAttribute("aria-expanded", "false");
+            drawer.setAttribute("aria-hidden", "true");
+        });
+    });
+</script>
