@@ -1,58 +1,152 @@
 ---
-const services = [
+import seoSrc       from '../assets/svgs/services/SEO.svg?url';
+import ppcSrc       from '../assets/svgs/services/PPC.svg?url';
+import smmSrc       from '../assets/svgs/services/SMM.svg?url';
+import emSrc        from '../assets/svgs/services/EM.svg?url';
+import ccSrc        from '../assets/svgs/services/CC.svg?url';
+import analyticsSrc from '../assets/svgs/services/Analytics.svg?url';
+
+import arrowBlackGreen from '../assets/svgs/arrow_in_circle_black_green.svg?url';
+import arrowWhiteBlack from '../assets/svgs/arrow_in_circle_white_black.svg?url';
+
+/**
+ * Card variants (from Figma):
+ *
+ * bg        | pillBg   | arrowSrc          | linkColor
+ * --------- | -------- | ----------------- | ---------
+ * #F3F3F3   | #B9FF66  | arrowBlackGreen   | #000000   ← grey card
+ * #B9FF66   | #FFFFFF  | arrowBlackGreen   | #000000   ← green card
+ * #191A23   | #FFFFFF  | arrowWhiteBlack   | #FFFFFF   ← dark card (white pills)
+ * #191A23   | #B9FF66  | arrowWhiteBlack   | #FFFFFF   ← dark card (green pills)
+ */
+const CARDS = [
   {
-    title: "Web Development",
-    description: "Custom web applications built with modern frameworks like Astro, React, and Next.js for blazing fast performance.",
-    icon: "code"
+    lines:       ['Search engine', 'optimization'],
+    bg:          '#F3F3F3',
+    pillBg:      '#B9FF66',
+    arrowSrc:    arrowBlackGreen,
+    linkColor:   '#000000',
+    svgSrc:      seoSrc,
+    imgFlip:     false,
   },
   {
-    title: "UI/UX Design",
-    description: "User-centric design that balances aesthetics with functionality to create delightful digital experiences.",
-    icon: "palette"
+    lines:       ['Pay-per-click', 'advertising'],
+    bg:          '#B9FF66',
+    pillBg:      '#FFFFFF',
+    arrowSrc:    arrowBlackGreen,
+    linkColor:   '#000000',
+    svgSrc:      ppcSrc,
+    imgFlip:     false,
   },
   {
-    title: "Digital Strategy",
-    description: "Data-driven insights to guide your digital transformation and maximize ROI across all channels.",
-    icon: "chart"
+    lines:       ['Social media', 'marketing'],
+    bg:          '#191A23',
+    pillBg:      '#FFFFFF',
+    arrowSrc:    arrowWhiteBlack,
+    linkColor:   '#FFFFFF',
+    svgSrc:      smmSrc,
+    imgFlip:     false,
   },
   {
-    title: "Mobile Apps",
-    description: "Native and cross-platform mobile applications that keep your users engaged on the go.",
-    icon: "mobile"
+    lines:       ['Email', 'marketing'],
+    bg:          '#F3F3F3',
+    pillBg:      '#B9FF66',
+    arrowSrc:    arrowBlackGreen,
+    linkColor:   '#000000',
+    svgSrc:      emSrc,
+    imgFlip:     true,
   },
   {
-    title: "E-Commerce",
-    description: "Scalable online stores designed to convert visitors into loyal customers with seamless checkout flows.",
-    icon: "shopping-bag"
+    lines:       ['Content', 'creation'],
+    bg:          '#B9FF66',
+    pillBg:      '#FFFFFF',
+    arrowSrc:    arrowBlackGreen,
+    linkColor:   '#000000',
+    svgSrc:      ccSrc,
+    imgFlip:     false,
   },
   {
-    title: "Cloud Solutions",
-    description: "Secure and scalable cloud infrastructure setup and management for your growing business needs.",
-    icon: "cloud"
-  }
+    lines:       ['Analytics and', 'tracking'],
+    bg:          '#191A23',
+    pillBg:      '#B9FF66',
+    arrowSrc:    arrowWhiteBlack,
+    linkColor:   '#FFFFFF',
+    svgSrc:      analyticsSrc,
+    imgFlip:     false,
+  },
 ];
 ---
 
-<section id="services" class="py-24 bg-slate-50">
-  <div class="layout-padding">
-    <div class="text-center max-w-3xl mx-auto mb-16">
-      <h2 class="text-3xl md:text-5xl font-bold text-slate-900 mb-6">Our Services</h2>
-      <p class="text-lg text-slate-600">We offer a comprehensive suite of digital services to help you dominate your market.</p>
+<section id="services" class="pt-[70px] pb-[70px] bg-white">
+
+  <!-- Heading Subheading Wrapper -->
+  <div class="flex flex-col md:flex-row items-start md:items-center w-full mx-auto box-border px-[20px] md:px-[100px] max-w-[1440px] gap-[30px] md:gap-[40px] mb-[40px] md:mb-[80px]">
+    
+    <!-- Green pill heading -->
+    <div class="flex flex-col items-start shrink-0">
+      <div class="flex flex-col items-start px-[7px] py-0 bg-[#B9FF66] rounded-[7px]">
+        <h2 class="m-0 font-sans font-medium text-[36px] md:text-[40px] leading-[46px] md:leading-[51px] text-black whitespace-nowrap">
+          Services
+        </h2>
+      </div>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      {services.map((service) => (
-        <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-shadow duration-300 border border-slate-100 group">
-          <div class="w-12 h-12 bg-indigo-50 rounded-xl flex items-center justify-center text-indigo-600 mb-6 group-hover:scale-110 transition-transform">
-            <!-- Icon placeholder - simpler than importing lucide temporarily -->
-            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-            </svg>
-          </div>
-          <h3 class="text-xl font-bold text-slate-900 mb-3">{service.title}</h3>
-          <p class="text-slate-600 leading-relaxed">{service.description}</p>
-        </div>
-      ))}
-    </div>
+    <!-- Description -->
+    <p class="m-0 font-sans font-normal text-[16px] md:text-[18px] leading-[22px] md:leading-[23px] text-black max-w-[580px] text-center md:text-left">
+      At our digital marketing agency, we offer a range of services to help
+      businesses grow and succeed online. These services include:
+    </p>
   </div>
+
+  <!-- Cards Grid -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-[40px] w-full mx-auto max-w-[1440px] px-[20px] md:px-[100px]">
+    {CARDS.map((card) => (
+      <div
+        class="flex flex-row justify-between items-center box-border w-full h-auto min-h-[270px] md:h-[310px] p-[30px] md:p-[50px] border border-[#191A23] rounded-[45px]"
+        style={`
+          background: ${card.bg};
+          box-shadow: 0px 5px 0px #191A23;
+        `}
+      >
+        <!-- LEFT: Heading + Link -->
+        <div class="flex flex-col justify-between h-full items-start gap-[40px] md:gap-[93px]">
+          
+          <div class="flex flex-col items-start">
+            {card.lines.map((line) => (
+              <div
+                class="flex items-start px-[7px] rounded-[7px] mb-1 last:mb-0"
+                style={`background: ${card.pillBg};`}
+              >
+                <h3 class="m-0 font-sans font-medium text-[24px] md:text-[30px] leading-[32px] md:leading-[38px] text-black whitespace-nowrap">
+                  {line}
+                </h3>
+              </div>
+            ))}
+          </div>
+
+          <a href="#" class="flex flex-row items-center gap-[15px] no-underline group">
+            <img src={card.arrowSrc} alt="Arrow" class="w-[41px] h-[41px] transition-transform group-hover:rotate-12" />
+            <span
+              class="hidden md:inline font-sans font-normal text-[20px] leading-[28px] whitespace-nowrap"
+              style={`color: ${card.linkColor};`}
+            >
+              Learn more
+            </span>
+          </a>
+        </div>
+
+        <!-- RIGHT: Illustration -->
+        <div class="shrink-0 flex items-center justify-center w-[150px] md:w-[210px] h-[150px] md:h-[210px]">
+          <img
+            src={card.svgSrc}
+            alt=""
+            aria-hidden="true"
+            class="block max-w-full max-h-full object-contain"
+            style={card.imgFlip ? 'transform: scaleX(-1);' : undefined}
+          />
+        </div>
+      </div>
+    ))}
+  </div>
+
 </section>
