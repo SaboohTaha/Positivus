@@ -1,40 +1,52 @@
 ---
+import ctaSrc from "../assets/svgs/CTA.svg?url";
 ---
 
-<section class="py-20 relative overflow-hidden">
-    <div class="absolute inset-0 bg-indigo-600 -z-10"></div>
-    <!-- Decorative circles -->
+<section
+    id="cta"
+    class="w-full bg-white overflow-visible py-[60px] md:py-[100px]"
+>
+    <!-- Inner CTA row — Figma: padding 0 100px, max-width 1440px -->
     <div
-        class="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"
+        class="flex flex-row items-center w-full mx-auto box-border px-[20px] md:px-[100px] max-w-[1440px]"
     >
-    </div>
-    <div
-        class="absolute bottom-0 left-0 w-64 h-64 bg-pink-500/20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"
-    >
-    </div>
-
-    <div class="layout-padding text-center">
-        <h2 class="text-3xl md:text-5xl font-bold text-white mb-6">
-            Ready to scale your business?
-        </h2>
-        <p class="text-xl text-indigo-100 mb-10 max-w-2xl mx-auto">
-            Join hundreds of successful companies who have transformed their
-            digital presence with us.
-        </p>
-
-        <div class="flex flex-col sm:flex-row justify-center gap-4">
-            <a
-                href="#contact"
-                class="px-8 py-4 bg-white text-indigo-600 font-bold rounded-full hover:bg-indigo-50 transition-colors shadow-lg"
+        <!-- Card — Figma: bg #F3F3F3, radius 45px, padding 0 60px -->
+        <div
+            class="flex flex-col md:flex-row items-center justify-between w-full h-auto min-h-[347px] bg-[#F3F3F3] rounded-[45px] px-[30px] md:px-[60px] py-[40px] md:py-0 relative overflow-hidden md:overflow-visible"
+        >
+            <!-- Text & Button Column — Figma: width 500px -->
+            <div
+                class="flex flex-col items-start gap-[20px] md:gap-[26px] z-10 max-w-full md:max-w-[500px]"
             >
-                Get a Free Audit
-            </a>
-            <a
-                href="#case-studies"
-                class="px-8 py-4 bg-indigo-700 text-white font-bold rounded-full hover:bg-indigo-800 transition-colors border border-indigo-500"
-            >
-                See Our Results
-            </a>
+                <h3
+                    class="m-0 font-sans font-medium text-[26px] md:text-[30px] leading-[34px] md:leading-[38px] text-black"
+                >
+                    Let’s make things happen
+                </h3>
+                <p
+                    class="m-0 font-sans font-normal text-[16px] md:text-[18px] leading-[22px] md:leading-[23px] text-black"
+                >
+                    Contact us today to learn more about how our digital
+                    marketing services can help your business grow and succeed
+                    online.
+                </p>
+                <a
+                    href="#contact"
+                    class="inline-flex items-center justify-center whitespace-nowrap no-underline px-[35px] py-[20px] bg-[#191A23] rounded-[14px] font-sans font-normal text-[18px] md:text-[20px] leading-[28px] text-white transition-all duration-200 hover:opacity-85 hover:-translate-y-0.5"
+                >
+                    Get your free proposal
+                </a>
+            </div>
+
+            <!-- Illustration Container — Figma center-to-center logic often overlaps -->
+            <div class="hidden md:block shrink-0 relative w-[359px] h-[394px]">
+                <img
+                    src={ctaSrc}
+                    alt=""
+                    aria-hidden="true"
+                    class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 block w-full h-full object-contain"
+                />
+            </div>
         </div>
     </div>
 </section>
