@@ -31,16 +31,17 @@ const testimonials = [
     avatar: "bg-yellow-200"
   },
 ];
+import SectionHeader from './ui/SectionHeader.astro';
 ---
 
-<section id="testimonials" class="py-24 bg-slate-50 relative overflow-hidden">
-  <div class="layout-padding">
-    <div class="text-center md:mb-16 mb-10">
-      <h2 class="text-3xl md:text-5xl font-bold text-slate-900 mb-6">What Our Clients Say</h2>
-    </div>
+<section id="testimonials" class="py-[60px] md:py-[100px] bg-white relative overflow-hidden">
+    <SectionHeader 
+        title="Testimonials"
+        description="Hear from Our Satisfied Clients: Read Our Testimonials to Learn More about Our Digital Marketing Services"
+        descriptionMaxWidth="473px"
+    />
 
     <!-- Scroll Snap Container -->
-    <div class="relative group">
       <div 
         id="testimonial-slider"
         class="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-8 -mx-4 px-4 md:mx-0 md:px-0 scrollbar-hide"
@@ -79,6 +80,4 @@ const testimonials = [
       >
         →
       </button>
-    </div>
-  </div>
 </section>

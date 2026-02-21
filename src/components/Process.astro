@@ -1,51 +1,77 @@
 ---
+import SectionHeader from "./ui/SectionHeader.astro";
+import ProcessCard from "./ui/ProcessCard.astro";
+
 const steps = [
   {
     number: "01",
-    title: "Discovery",
-    description: "We dive deep into your business goals, user needs, and market landscape to build a solid strategy."
+    title: "Consultation",
+    description:
+      "During the initial consultation, we will discuss your business goals and objectives, target audience, and current marketing efforts. This will allow us to understand your needs and tailor our services to best fit your requirements.",
   },
   {
     number: "02",
-    title: "Design",
-    description: "Our creative team crafts intuitive and stunning interfaces that align with your brand identity."
+    title: "Research and Strategy Development",
+    description:
+      "We dive deep into market research, analyzing your competitors and identifying key opportunities. Based on these insights, we develop a comprehensive strategy tailored to achieve your specific business goals.",
   },
   {
     number: "03",
-    title: "Development",
-    description: "We build robust, scalable solutions using modern technologies and best coding practices."
+    title: "Implementation",
+    description:
+      "Our team executes the strategies developed in the previous phase, utilizing top-tier tools and techniques to bring your vision to life across the chosen digital channels.",
   },
   {
     number: "04",
-    title: "Launch & Scale",
-    description: "We ensure a smooth launch and provide ongoing support to help your product grow."
-  }
+    title: "Monitoring and Optimization",
+    description:
+      "We continuously track the performance of your campaigns, making data-driven adjustments in real-time to ensure maximum efficiency and ROI.",
+  },
+  {
+    number: "05",
+    title: "Reporting and Communication",
+    description:
+      "You'll receive detailed regular reports on performance metrics and project status, ensuring transparency and open communication throughout our partnership.",
+  },
+  {
+    number: "06",
+    title: "Continual Improvement",
+    description:
+      "Digital marketing is an iterative process. we take the lessons learned from every campaign to refine our approach and drive even better results over time.",
+  },
 ];
 ---
 
-<section id="process" class="py-24 bg-slate-50 relative">
-  <div class="layout-padding">
-    <div class="text-center max-w-3xl mx-auto mb-20">
-      <h2 class="text-3xl md:text-5xl font-bold text-slate-900 mb-6">Our Process</h2>
-      <p class="text-lg text-slate-600">A proven methodology to deliver exceptional results, every time.</p>
-    </div>
+<section id="process" class="py-[60px] md:py-[100px] bg-white relative">
+  <SectionHeader
+    title="Our Working Process"
+    description="Step-by-Step Guide to Achieving Your Business Goals"
+    descriptionMaxWidth="292px"
+  />
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10">
-      {steps.map((step, index) => (
-        <div class="relative p-8 bg-white rounded-2xl shadow-sm hover:shadow-lg transition-shadow duration-300 border border-slate-100 group">
-          <div class="text-6xl font-black text-slate-100 absolute top-4 right-4 z-0 group-hover:text-indigo-50 transition-colors duration-300 select-none">
-            {step.number}
-          </div>
-          <div class="relative z-10">
-            <h3 class="text-xl font-bold text-slate-900 mb-4 mt-8">{step.title}</h3>
-            <p class="text-slate-600 leading-relaxed">{step.description}</p>
-          </div>
-          <!-- Connector line for desktop (visual only, simple CSS trick) -->
-          {index < steps.length - 1 && (
-            <div class="hidden lg:block absolute top-1/2 -right-6 w-12 h-0.5 bg-slate-200 -z-10 translate-x-2"></div>
-          )}
-        </div>
-      ))}
-    </div>
+  <div
+    class="flex flex-col items-start w-full mx-auto box-border px-[20px] md:px-[100px] max-w-[1440px] gap-[30px]"
+  >
+    {
+      steps.map((step) => (
+        <ProcessCard
+          number={step.number}
+          title={step.title}
+          description={step.description}
+        />
+      ))
+    }
   </div>
 </section>
+
+<script is:inline>
+  document.addEventListener("DOMContentLoaded", () => {
+    const cards = document.querySelectorAll(".process-card");
+
+    cards.forEach((card) => {
+      card.addEventListener("click", () => {
+        card.classList.toggle("is-open");
+      });
+    });
+  });
+</script>

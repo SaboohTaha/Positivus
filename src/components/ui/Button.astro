@@ -1,0 +1,27 @@
+---
+interface Props {
+    href: string;
+    className?: string;
+    width?: string;
+    id?: string;
+}
+
+const { href, className = "", width = "auto", id = "" } = Astro.props;
+---
+
+<a
+    href={href}
+    id={id}
+    class={`inline-flex items-center justify-center whitespace-nowrap no-underline px-[35px] py-[20px] bg-[#191A23] rounded-[14px] font-sans font-normal text-[20px] leading-[28px] text-white transition-all duration-200 hover:bg-black hover:-translate-y-0.5 ${className}`}
+    style={width !== "auto" ? `width: ${width}` : undefined}
+>
+    <slot />
+</a>
+
+<style>
+    @media (max-width: 768px) {
+        a {
+            width: 100% !important;
+        }
+    }
+</style>

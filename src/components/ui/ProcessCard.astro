@@ -1,0 +1,79 @@
+---
+interface Props {
+    number: string;
+    title: string;
+    description: string;
+}
+
+const { number, title, description } = Astro.props;
+import plusIcon from "../../assets/svgs/icons/plus.svg?url";
+import minusIcon from "../../assets/svgs/icons/minus.svg?url";
+---
+
+<div
+    class="process-card group w-full border border-[#191A23] rounded-[45px] transition-all duration-300 overflow-hidden cursor-pointer bg-[#F3F3F3]"
+    style="box-shadow: 0px 5px 0px #191A23;"
+>
+    <div
+        class="flex flex-row justify-between items-center w-full px-[30px] md:px-[60px] py-[30px] md:py-[41px]"
+    >
+        <div class="flex flex-row items-center gap-[25px]">
+            <span
+                class="font-sans font-medium text-[30px] md:text-[60px] leading-none text-black"
+            >
+                {number}
+            </span>
+            <h3
+                class="m-0 font-sans font-medium text-[18px] md:text-[30px] leading-tight text-black"
+            >
+                {title}
+            </h3>
+        </div>
+        <div
+            class="shrink-0 w-[30px] h-[30px] md:w-[58px] md:h-[58px] relative"
+        >
+            <img
+                src={plusIcon}
+                alt="Expand"
+                class="plus-icon absolute inset-0 w-full h-full object-contain transition-opacity duration-300 opacity-100"
+            />
+            <img
+                src={minusIcon}
+                alt="Collapse"
+                class="minus-icon absolute inset-0 w-full h-full object-contain transition-opacity duration-300 opacity-0"
+            />
+        </div>
+    </div>
+
+    <div
+        class="content-wrapper max-h-0 opacity-0 overflow-hidden transition-all duration-300 ease-in-out"
+    >
+        <div class="px-[30px] md:px-[60px] pb-[30px] md:pb-[41px]">
+            <div class="w-full h-[1px] bg-black mb-[30px]"></div>
+            <p
+                class="m-0 font-sans font-normal text-[16px] md:text-[18px] leading-[22px] md:leading-[23px] text-black"
+            >
+                {description}
+            </p>
+        </div>
+    </div>
+</div>
+
+<style>
+    .process-card.is-open {
+        background-color: #b9ff66;
+    }
+
+    .process-card.is-open .content-wrapper {
+        max-height: 500px;
+        opacity: 1;
+    }
+
+    .process-card.is-open .plus-icon {
+        opacity: 0;
+    }
+
+    .process-card.is-open .minus-icon {
+        opacity: 1;
+    }
+</style>

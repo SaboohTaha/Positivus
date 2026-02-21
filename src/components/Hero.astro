@@ -1,4 +1,5 @@
 ---
+import Button from "./ui/Button.astro";
 import heroSrc from "../assets/svgs/hero_section.svg?url";
 import amazonSrc from "../assets/svgs/company/amazon.svg?url";
 import dribbleSrc from "../assets/svgs/company/dribble.svg?url";
@@ -38,12 +39,7 @@ const logos = [
                 media marketing, and content creation.
             </p>
 
-            <a
-                href="#contact"
-                class="inline-flex items-center justify-center no-underline whitespace-nowrap px-[35px] py-[20px] gap-[10px] bg-[#191A23] rounded-[14px] font-sans font-normal text-[20px] leading-[28px] text-white transition-all duration-200 hover:opacity-85 hover:-translate-y-0.5"
-            >
-                Book a consultation
-            </a>
+            <Button href="#contact" width="264px">Book a consultation</Button>
         </div>
 
         <!-- RIGHT COLUMN — hero illustration SVG -->
@@ -57,10 +53,7 @@ const logos = [
         </div>
     </div>
 
-    <!-- ── LOGOTYPES ROW ─────────────────────────────────────
-       Figma: flex-row | justify-content space-between
-              padding 0 100px | max-width 1440px | height 48px
-  ──────────────────────────────────────────────────────── -->
+    <!-- ── LOGOTYPES ROW ───────────────────────────────────── -->
     <div
         class="flex flex-row justify-between items-center w-full mx-auto box-border px-[100px] max-w-[1440px] h-[48px] mt-[60px] mb-[60px]"
     >

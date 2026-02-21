@@ -1,0 +1,42 @@
+---
+interface Props {
+    title: string;
+    description: string;
+    descriptionMaxWidth?: string;
+    className?: string;
+}
+
+const {
+    title,
+    description,
+    descriptionMaxWidth = "580px",
+    className = "",
+} = Astro.props;
+---
+
+<div
+    class={`flex flex-col md:flex-row items-start md:items-start w-full mx-auto box-border px-[20px] md:px-[100px] max-w-[1440px] gap-[30px] md:gap-[40px] mb-[40px] md:mb-[80px] ${className}`}
+>
+    <!-- Green pill heading -->
+    <div class="flex flex-col items-start shrink-0">
+        <div
+            class="flex flex-col items-start px-[7px] py-0 bg-[#B9FF66] rounded-[7px]"
+        >
+            <h2
+                class="m-0 font-sans font-medium text-[36px] md:text-[40px] leading-[46px] md:leading-[51px] text-black whitespace-nowrap"
+            >
+                {title}
+            </h2>
+        </div>
+    </div>
+
+    <!-- Description -->
+    <p
+        class="m-0 font-sans font-normal text-[16px] md:text-[18px] leading-[22px] md:leading-[23px] text-black"
+        style={descriptionMaxWidth
+            ? `max-width: ${descriptionMaxWidth}`
+            : undefined}
+    >
+        {description}
+    </p>
+</div>
