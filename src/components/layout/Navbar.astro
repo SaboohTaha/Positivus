@@ -1,5 +1,5 @@
 ---
-import logoSrc from "@assets/svgs/positivitus_logo.svg?url";
+import Logo from "@components/svgs/Logo.astro";
 
 const links = [
     { text: "About us", href: "#about" },
@@ -28,11 +28,7 @@ const links = [
             aria-label="Positivitus home"
             class="shrink-0 flex items-center"
         >
-            <img
-                src={logoSrc}
-                alt="Positivitus"
-                class="block object-contain w-[219.54px] h-[36px]"
-            />
+            <Logo className="w-[219.54px] h-[36px]" />
         </a>
 
         <!-- RIGHT: Links + CTA — desktop only, gap 40px -->

@@ -1,5 +1,6 @@
 ---
 import SectionHeader from '@components/ui/SectionHeader.astro';
+import TestimonialTail from '@components/svgs/TestimonialTail.astro';
 
 // Import SVG assets
 import textBubble from '@assets/svgs/text_bubble.svg?url';
@@ -64,17 +65,8 @@ const testimonials = [
                 "{t.text}"
               </p>
 
-              <!-- SVG Tail - Integrated dynamically -->
-              <div class="absolute -bottom-[28px] left-[50px] md:left-[60px] w-[53px] h-[28px]">
-                <svg width="53" height="28" viewBox="0 0 53 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <!-- Masking the border of the box behind the tail -->
-                  <path d="M0 0H53V2H0V0Z" fill="#191A23" />
-                  <!-- The Tail Shape -->
-                  <path d="M26.5 28L0 0H53L26.5 28Z" fill="#191A23" />
-                  <!-- The Tail Border (only sides) -->
-                  <path d="M0 0L26.5 28L53 0" stroke="#B9FF66" stroke-width="2" />
-                </svg>
-              </div>
+              <!-- SVG Tail - Dynamic Component -->
+              <TestimonialTail className="absolute -bottom-[28px] left-[50px] md:left-[60px]" />
             </div>
 
             <!-- Author Info -->

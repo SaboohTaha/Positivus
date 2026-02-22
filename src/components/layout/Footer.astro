@@ -1,8 +1,6 @@
 ---
-import facebookIcon from "@assets/svgs/company/facebook_footer.svg?url";
-import linkedinIcon from "@assets/svgs/company/linkedin_footer.svg?url";
-import twitterIcon from "@assets/svgs/company/twitter_footer.svg?url";
-import logoSrc from "@assets/svgs/positivitus_logo.svg?url";
+import Logo from "@components/svgs/Logo.astro";
+import SocialIcon from "@components/svgs/SocialIcon.astro";
 
 const navLinks = [
     { name: "About us", href: "#" },
@@ -13,10 +11,10 @@ const navLinks = [
 ];
 
 const socialLinks = [
-    { icon: linkedinIcon, href: "#", name: "LinkedIn" },
-    { icon: facebookIcon, href: "#", name: "Facebook" },
-    { icon: twitterIcon, href: "#", name: "Twitter" },
-];
+    { platform: "linkedin", href: "#", name: "LinkedIn" },
+    { platform: "facebook", href: "#", name: "Facebook" },
+    { platform: "twitter", href: "#", name: "Twitter" },
+] as const;
 ---
 
 <footer class="md:px-[100px] bg-white max-w-[1440px] mx-auto">
@@ -29,11 +27,7 @@ const socialLinks = [
         >
             <!-- Logo -->
             <a href="/" class="flex items-center gap-2">
-                <img
-                    src={logoSrc}
-                    alt="Positivus"
-                    class="h-[29px] brightness-0 invert"
-                />
+                <Logo fill="white" className="h-[29px] w-auto" />
             </a>
 
             <!-- Navigation -->
@@ -58,11 +52,7 @@ const socialLinks = [
                             href={social.href}
                             class="w-[30px] h-[30px] transition-transform hover:scale-110"
                         >
-                            <img
-                                src={social.icon}
-                                alt={social.name}
-                                class="w-full h-full"
-                            />
+                            <SocialIcon platform={social.platform} />
                         </a>
                     ))
                 }

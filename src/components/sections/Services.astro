@@ -6,27 +6,25 @@ import emSrc        from '@assets/svgs/services/EM.svg?url';
 import ccSrc        from '@assets/svgs/services/CC.svg?url';
 import analyticsSrc from '@assets/svgs/services/Analytics.svg?url';
 
-import arrowBlackGreen from '@assets/svgs/arrows/arrow_in_circle_black_green.svg?url';
-import arrowWhiteBlack from '@assets/svgs/arrows/arrow_in_circle_white_black.svg?url';
-
 import SectionHeader from '@components/ui/SectionHeader.astro';
+import ArrowInCircle from '@components/svgs/icons/ArrowInCircle.astro';
 
 /**
  * Card variants (from Figma):
  *
- * bg        | pillBg   | arrowSrc          | linkColor
- * --------- | -------- | ----------------- | ---------
- * #F3F3F3   | #B9FF66  | arrowBlackGreen   | #000000   ← grey card
- * #B9FF66   | #FFFFFF  | arrowBlackGreen   | #000000   ← green card
- * #191A23   | #FFFFFF  | arrowWhiteBlack   | #FFFFFF   ← dark card (white pills)
- * #191A23   | #B9FF66  | arrowWhiteBlack   | #FFFFFF   ← dark card (green pills)
+ * bg        | pillBg   | arrowColors               | linkColor
+ * --------- | -------- | ------------------------- | ---------
+ * #F3F3F3   | #B9FF66  | black / green             | #000000   ← grey card
+ * #B9FF66   | #FFFFFF  | black / green             | #000000   ← green card
+ * #191A23   | #FFFFFF  | white / black             | #FFFFFF   ← dark card (white pills)
+ * #191A23   | #B9FF66  | white / black             | #FFFFFF   ← dark card (green pills)
  */
 const CARDS = [
   {
     lines:       ['Search engine', 'optimization'],
     bg:          '#F3F3F3',
     pillBg:      '#B9FF66',
-    arrowSrc:    arrowBlackGreen,
+    arrowColors: { circle: '#191A23', arrow: '#B9FF66' },
     linkColor:   '#000000',
     svgSrc:      seoSrc,
     imgFlip:     false,
@@ -35,7 +33,7 @@ const CARDS = [
     lines:       ['Pay-per-click', 'advertising'],
     bg:          '#B9FF66',
     pillBg:      '#FFFFFF',
-    arrowSrc:    arrowBlackGreen,
+    arrowColors: { circle: '#191A23', arrow: '#B9FF66' },
     linkColor:   '#000000',
     svgSrc:      ppcSrc,
     imgFlip:     false,
@@ -44,7 +42,7 @@ const CARDS = [
     lines:       ['Social media', 'marketing'],
     bg:          '#191A23',
     pillBg:      '#FFFFFF',
-    arrowSrc:    arrowWhiteBlack,
+    arrowColors: { circle: 'white', arrow: '#191A23' },
     linkColor:   '#FFFFFF',
     svgSrc:      smmSrc,
     imgFlip:     false,
@@ -53,7 +51,7 @@ const CARDS = [
     lines:       ['Email', 'marketing'],
     bg:          '#F3F3F3',
     pillBg:      '#B9FF66',
-    arrowSrc:    arrowBlackGreen,
+    arrowColors: { circle: '#191A23', arrow: '#B9FF66' },
     linkColor:   '#000000',
     svgSrc:      emSrc,
     imgFlip:     true,
@@ -62,7 +60,7 @@ const CARDS = [
     lines:       ['Content', 'creation'],
     bg:          '#B9FF66',
     pillBg:      '#FFFFFF',
-    arrowSrc:    arrowBlackGreen,
+    arrowColors: { circle: '#191A23', arrow: '#B9FF66' },
     linkColor:   '#000000',
     svgSrc:      ccSrc,
     imgFlip:     false,
@@ -71,7 +69,7 @@ const CARDS = [
     lines:       ['Analytics and', 'tracking'],
     bg:          '#191A23',
     pillBg:      '#B9FF66',
-    arrowSrc:    arrowWhiteBlack,
+    arrowColors: { circle: 'white', arrow: '#191A23' },
     linkColor:   '#FFFFFF',
     svgSrc:      analyticsSrc,
     imgFlip:     false,
@@ -113,7 +111,11 @@ const CARDS = [
           </div>
 
           <a href="#" class="flex flex-row items-center gap-[15px] no-underline group">
-            <img src={card.arrowSrc} alt="Arrow" class="w-[41px] h-[41px] transition-transform group-hover:rotate-12" />
+            <ArrowInCircle 
+              className="w-[41px] h-[41px] transition-transform group-hover:rotate-12" 
+              circleFill={card.arrowColors.circle}
+              arrowFill={card.arrowColors.arrow}
+            />
             <span
               class="hidden md:inline font-sans font-normal text-[20px] leading-[28px] whitespace-nowrap"
               style={`color: ${card.linkColor};`}
