@@ -20,7 +20,7 @@ const links = [
 >
     <!-- Inner row -->
     <div
-        class="flex flex-row justify-between items-center w-full mx-auto box-border h-[68px] px-container-padding max-w-[1440px]"
+        class="flex flex-row justify-between items-center w-full mx-auto box-border h-[68px] px-[20px] xl:px-container-padding max-w-[1440px]"
     >
         <!-- LEFT: Logo -->
         <a
@@ -28,16 +28,18 @@ const links = [
             aria-label="Positivitus home"
             class="shrink-0 flex items-center"
         >
-            <Logo className="w-[219.54px] h-[36px]" />
+            <Logo className="w-[160px] xl:w-[219.54px] h-auto" />
         </a>
 
         <!-- RIGHT: Links + CTA — desktop only, gap 40px -->
-        <div class="hidden md:flex flex-row items-center gap-[40px]">
+        <div
+            class="hidden lg:flex flex-row items-center gap-[15px] xl:gap-[40px]"
+        >
             {
                 links.map((link) => (
                     <a
                         href={link.href}
-                        class="font-sans font-normal text-[20px] leading-[28px] text-black
+                        class="font-sans font-normal text-[16px] xl:text-[20px] leading-[28px] text-black
                  whitespace-nowrap no-underline transition-opacity duration-150 hover:opacity-60"
                     >
                         {link.text}
@@ -49,21 +51,21 @@ const links = [
             <a
                 href="#contact"
                 id="request-quote-btn"
-                class="inline-flex items-center justify-center whitespace-nowrap no-underline box-border px-[35px] py-[20px] gap-[10px] border border-[#191A23] rounded-[14px] font-sans font-normal text-[20px] leading-[28px] text-black transition-colors duration-200 hover:bg-[#191A23] hover:text-white"
+                class="inline-flex items-center justify-center whitespace-nowrap no-underline box-border px-[15px] xl:px-[35px] py-[10px] xl:py-[20px] gap-[10px] border border-[#191A23] rounded-[14px] font-sans font-normal text-[16px] xl:text-[20px] leading-[28px] text-black transition-colors duration-200 hover:bg-[#191A23] hover:text-white"
             >
                 Request a Quote
             </a>
         </div>
 
-        <!-- MOBILE: Hamburger button (visible only below md) -->
+        <!-- MOBILE: Hamburger button (visible only below lg) -->
         <button
             id="mobile-menu-toggle"
-            class="flex md:hidden items-center justify-center bg-transparent border-0 cursor-pointer p-1 text-slate-800 hover:text-black transition-colors focus:outline-none"
+            class="flex lg:hidden items-center justify-center bg-transparent border-0 cursor-pointer p-1 text-slate-800 hover:text-black transition-colors focus:outline-none"
             aria-label="Toggle menu"
             aria-expanded="false"
         >
             <svg
-                class="w-7 h-7"
+                class="w-8 h-8"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -80,14 +82,14 @@ const links = [
     <!-- MOBILE DRAWER — hidden by default, JS adds/removes 'hidden' and 'flex' -->
     <div
         id="mobile-menu"
-        class="hidden flex-col gap-5 px-6 pb-6 pt-4 bg-white border-t border-slate-200"
+        class="hidden flex-col gap-5 px-[20px] pb-6 pt-4 bg-white border-t border-slate-200 absolute w-full left-0 top-full shadow-lg"
         aria-hidden="true"
     >
         {
             links.map((link) => (
                 <a
                     href={link.href}
-                    class="font-sans font-normal text-[20px] leading-[28px] text-black
+                    class="font-sans font-normal text-[18px] leading-[28px] text-black
                no-underline transition-opacity duration-150 hover:opacity-60"
                 >
                     {link.text}
@@ -97,7 +99,7 @@ const links = [
 
         <a
             href="#contact"
-            class="inline-flex items-center justify-center w-full no-underline box-border px-[28px] py-[14px] gap-[10px] border border-[#191A23] rounded-[14px] font-sans font-normal text-[20px] leading-[28px] text-black transition-colors duration-200 hover:bg-[#191A23] hover:text-white"
+            class="inline-flex items-center justify-center w-full no-underline box-border px-[28px] py-[14px] gap-[10px] border border-[#191A23] rounded-[14px] font-sans font-normal text-[18px] leading-[28px] text-black transition-colors duration-200 hover:bg-[#191A23] hover:text-white"
         >
             Request a Quote
         </a>
