@@ -21,50 +21,63 @@ const logos = [
 <section id="hero" class="w-full bg-white overflow-hidden">
     <!-- ── MAIN HERO ROW ────────────────────────────────────── -->
     <div
-        class="flex flex-row justify-between items-start w-full mx-auto box-border pt-[60px] pb-0 px-[100px] max-w-[1440px] min-h-[515px]"
+        class="flex flex-col lg:flex-row justify-between items-center lg:items-start w-full mx-auto box-border pt-[40px] md:pt-[60px] pb-5 lg:pb-0 px-[20px] md:px-container-padding max-w-[1440px]"
     >
         <!-- LEFT COLUMN -->
-        <div class="flex flex-col items-start gap-[35px] shrink-0 w-[531px]">
+        <div
+            class="flex flex-col items-center lg:items-start text-center lg:text-left gap-[25px] md:gap-[35px] w-full lg:max-w-[531px]"
+        >
             <h1
-                class="m-0 w-[531px] font-sans font-medium text-[60px] leading-[77px] text-black"
+                class="m-0 font-sans font-medium text-[40px] md:text-[60px] leading-[48px] md:leading-[77px] text-black"
             >
                 Navigating the digital landscape for success
             </h1>
 
+            <!-- Illustration for Mobile - Visible between h1 and p as per common mobile patterns or keeps p next to h1 -->
+            <div class="lg:hidden w-full max-w-[400px] my-5">
+                <img
+                    src={heroSrc}
+                    alt=""
+                    aria-hidden="true"
+                    class="block w-full h-auto object-contain"
+                />
+            </div>
+
             <p
-                class="m-0 w-[498px] font-sans font-normal text-[20px] leading-[28px] text-black"
+                class="m-0 font-sans font-normal text-[16px] md:text-[20px] leading-[23px] md:leading-[28px] text-black max-w-[498px]"
             >
                 Our digital marketing agency helps businesses grow and succeed
                 online through a range of services including SEO, PPC, social
                 media marketing, and content creation.
             </p>
 
-            <Button href="#contact" width="264px">Book a consultation</Button>
+            <Button href="#contact" className="w-full md:w-[264px]">
+                Book a consultation
+            </Button>
         </div>
 
-        <!-- RIGHT COLUMN — hero illustration SVG -->
-        <div class="shrink-0 relative w-[600.46px] h-[515px]">
+        <!-- RIGHT COLUMN — hero illustration SVG (Desktop only) -->
+        <div class="hidden lg:block shrink-0 relative w-[600px] h-auto">
             <img
                 src={heroSrc}
                 alt=""
                 aria-hidden="true"
-                class="block w-full h-full object-contain"
+                class="block w-full h-auto object-contain"
             />
         </div>
     </div>
 
     <!-- ── LOGOTYPES ROW ───────────────────────────────────── -->
     <div
-        class="flex flex-row justify-between items-center w-full mx-auto box-border px-[100px] max-w-[1440px] h-[48px] mt-[60px] mb-[60px]"
+        class="flex flex-row flex-wrap justify-center lg:justify-between items-center w-full mx-auto box-border px-[20px] md:px-container-padding max-w-[1440px] gap-8 md:gap-10 mt-[60px] mb-[60px]"
     >
         {
             logos.map((logo) => (
                 <img
                     src={logo.src}
                     alt={logo.alt}
-                    height="48"
-                    style={`width:${logo.width}px; mix-blend-mode:luminosity;`}
-                    class="block object-contain shrink-0"
+                    style={`width:${logo.width}px;`}
+                    class="block object-contain shrink-0 h-[30px] md:h-[48px] company-logo"
                 />
             ))
         }
@@ -72,47 +85,8 @@ const logos = [
 </section>
 
 <style>
-    /* Responsive — custom pixel widths can't be fully expressed in Tailwind */
-    @media (max-width: 1100px) {
-        #hero > div:first-child {
-            flex-direction: column;
-            align-items: center;
-            padding: 40px 40px 0 !important;
-            gap: 40px;
-        }
-        #hero h1,
-        #hero p {
-            width: 100% !important;
-        }
-        #hero .shrink-0.relative {
-            width: 100% !important;
-            max-width: 560px;
-            height: auto !important;
-            aspect-ratio: 600 / 515;
-        }
-        /* Logo row wraps on smaller screens */
-        #hero > div:last-child {
-            flex-wrap: wrap;
-            height: auto !important;
-            gap: 24px;
-            justify-content: center;
-            padding: 0 40px !important;
-        }
-    }
-    @media (max-width: 600px) {
-        #hero h1 {
-            font-size: 38px !important;
-            line-height: 50px !important;
-        }
-        #hero p {
-            font-size: 17px !important;
-        }
-        #hero > div:first-child {
-            padding: 32px 20px 0 !important;
-        }
-        #hero > div:last-child {
-            padding: 0 20px !important;
-            gap: 16px;
-        }
+    /* Only apply greyscale blend to the company icons, not the main hero illustration */
+    .company-logo {
+        mix-blend-mode: luminosity;
     }
 </style>

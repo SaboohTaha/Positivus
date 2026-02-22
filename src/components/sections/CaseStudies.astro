@@ -18,14 +18,14 @@ const caseStudies = [
 ];
 ---
 
-<section id="case-studies" class="my-[60px] md:my-[100px] bg-white overflow-hidden">
+<section id="case-studies" class="my-[60px] md:my-container-padding bg-white overflow-hidden">
     <SectionHeader 
         title="Case Studies"
         description="Explore Real-Life Examples of Our Proven Digital Marketing Success through Our Case Studies"
     />
 
     <!-- Case Studies Container -->
-    <div class="w-full mx-auto box-border px-[20px] md:px-[100px] max-w-[1440px]">
+    <div class="w-full mx-auto box-border px-[20px] md:px-container-padding max-w-[1440px]">
         <div class="bg-[#191A23] rounded-[45px] p-[30px] md:py-[70px] md:px-[60px] flex flex-col md:flex-row items-stretch md:items-center justify-between">
             {caseStudies.map((study, index) => (
                 <>
@@ -48,9 +48,9 @@ const caseStudies = [
                     {index < caseStudies.length - 1 && (
                         <>
                             <!-- Desktop Vertical Line -->
-                            <div class="hidden md:block w-[1px] h-[186px] bg-white mx-[64px] shrink-0"></div>
+                            <div class="hidden md:block w-px h-[186px] bg-white mx-[64px] shrink-0"></div>
                             <!-- Mobile Horizontal Line -->
-                            <div class="block md:hidden w-full h-[1px] bg-white/20 my-[30px]"></div>
+                            <div class="block md:hidden w-full h-px bg-white/20 my-[30px]"></div>
                         </>
                     )}
                 </>

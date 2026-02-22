@@ -38,14 +38,14 @@ const testimonials = [
 ];
 ---
 
-<section id="testimonials" class="my-[60px] md:my-[100px] bg-white overflow-hidden">
+<section id="testimonials" class="my-[60px] md:my-container-padding bg-white overflow-hidden">
   <SectionHeader 
     title="Testimonials"
     description="Hear from Our Satisfied Clients: Read Our Testimonials to Learn More about Our Digital Marketing Services"
     descriptionMaxWidth="473px"
   />
 
-  <div class="max-w-[1440px] mx-auto px-[20px] md:px-[100px]">
+  <div class="max-w-[1440px] mx-auto px-[20px] md:px-container-padding">
     <!-- Main Dark Container -->
     <div class="bg-[#191A23] rounded-[45px] py-[40px] md:py-[84px] relative overflow-hidden">
       
@@ -56,7 +56,7 @@ const testimonials = [
         style="scrollbar-width: none; -ms-overflow-style: none;"
       >
         {testimonials.map((t, index) => (
-          <div class="testimonial-card flex-shrink-0 w-[280px] md:w-[606px] snap-center flex flex-col gap-[40px] md:gap-[48px] items-start transition-opacity duration-300">
+          <div class="testimonial-card shrink-0 w-[280px] md:w-[606px] snap-center flex flex-col gap-[40px] md:gap-[48px] items-start transition-opacity duration-300">
             <!-- Dynamic Bubble Container -->
             <div class="relative w-full border-2 border-[#B9FF66] rounded-[45px] px-[30px] md:px-[52px] py-[30px] md:py-[48px] min-h-[160px] flex items-center">
               
@@ -86,7 +86,7 @@ const testimonials = [
       <div class="flex flex-col md:flex-row items-center justify-center gap-[40px] md:gap-[150px] lg:gap-[189px] mt-[60px] md:mt-[124px] px-[20px]">
         
         <!-- Controls Container -->
-        <div class="flex flex-row items-center gap-[40px] md:gap-[100px]">
+        <div class="flex flex-row items-center gap-[40px] md:gap-container-padding">
           <!-- Arrow Left -->
           <button id="prev-testimonial" class="p-2 border-none bg-transparent cursor-pointer group transition-all duration-300 disabled:opacity-30 disabled:cursor-not-allowed">
             <img src={arrowLeft} alt="Previous" class="w-[20px] md:w-[23px] group-hover:scale-110 transition-transform" />

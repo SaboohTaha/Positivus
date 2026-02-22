@@ -42,7 +42,10 @@ const steps = [
 ];
 ---
 
-<section id="process" class="my-[60px] md:my-[100px] bg-white relative">
+<section
+  id="process"
+  class="my-[60px] md:my-container-padding bg-white relative"
+>
   <SectionHeader
     title="Our Working Process"
     description="Step-by-Step Guide to Achieving Your Business Goals"
@@ -50,7 +53,7 @@ const steps = [
   />
 
   <div
-    class="flex flex-col items-start w-full mx-auto box-border px-[20px] md:px-[100px] max-w-[1440px] gap-[30px]"
+    class="flex flex-col items-start w-full mx-auto box-border px-[20px] md:px-container-padding max-w-[1440px] gap-[30px]"
   >
     {
       steps.map((step) => (
