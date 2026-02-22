@@ -88,14 +88,14 @@ const CARDS = [
   <div class="grid grid-cols-1 md:grid-cols-2 gap-[40px] w-full mx-auto max-w-[1440px] px-[20px] md:px-container-padding">
     {CARDS.map((card) => (
       <div
-        class="flex flex-row justify-between items-center box-border w-full h-auto min-h-[270px] md:h-[310px] p-[30px] md:p-[50px] border border-[#191A23] rounded-[45px]"
+        class="flex flex-row justify-between items-center box-border w-full h-auto min-h-[270px] lg:h-[310px] p-[30px] lg:p-[50px] border border-[#191A23] rounded-[45px] overflow-hidden"
         style={`
           background: ${card.bg};
           box-shadow: 0px 5px 0px #191A23;
         `}
       >
         <!-- LEFT: Heading + Link -->
-        <div class="flex flex-col justify-between h-full items-start gap-[40px] md:gap-[93px]">
+        <div class="flex flex-col justify-between h-full items-start gap-10 lg:gap-[93px] flex-1 min-w-0">
           
           <div class="flex flex-col items-start">
             {card.lines.map((line) => (
@@ -103,21 +103,21 @@ const CARDS = [
                 class="flex items-start px-[7px] rounded-[7px] mb-1 last:mb-0"
                 style={`background: ${card.pillBg};`}
               >
-                <h3 class="m-0 font-sans font-medium text-[24px] md:text-[30px] leading-[32px] md:leading-[38px] text-black whitespace-nowrap">
+                <h3 class="m-0 font-sans font-medium text-[20px] md:text-[24px] lg:text-[30px] leading-[28px] md:leading-[32px] lg:leading-[38px] text-black whitespace-normal md:whitespace-nowrap">
                   {line}
                 </h3>
               </div>
             ))}
           </div>
 
-          <a href="#" class="flex flex-row items-center gap-[15px] no-underline group">
+          <a href="#" class="flex flex-row items-center gap-[15px] no-underline group shrink-0">
             <ArrowInCircle 
               className="w-[41px] h-[41px] transition-transform group-hover:rotate-12" 
               circleFill={card.arrowColors.circle}
               arrowFill={card.arrowColors.arrow}
             />
             <span
-              class="hidden md:inline font-sans font-normal text-[20px] leading-[28px] whitespace-nowrap"
+              class="hidden md:inline font-sans font-normal text-[18px] lg:text-[20px] leading-[28px] whitespace-nowrap"
               style={`color: ${card.linkColor};`}
             >
               Learn more
@@ -126,7 +126,7 @@ const CARDS = [
         </div>
 
         <!-- RIGHT: Illustration -->
-        <div class="shrink-0 flex items-center justify-center w-[150px] md:w-[210px] h-[150px] md:h-[210px]">
+        <div class="shrink-0 flex items-center justify-center w-[110px] md:w-[140px] xl:w-[210px] h-[110px] md:h-[140px] xl:h-[210px] ml-4">
           <img
             src={card.svgSrc}
             alt=""
