@@ -55,18 +55,26 @@ const testimonials = [
         style="scrollbar-width: none; -ms-overflow-style: none;"
       >
         {testimonials.map((t, index) => (
-          <div class="testimonial-card flex-shrink-0 w-[300px] md:w-[606px] snap-center flex flex-col gap-[20px] items-start transition-opacity duration-300">
-            <!-- Bubble Background  -->
-            <div class="relative w-full aspect-[606/266] flex items-center justify-center px-[30px] md:px-[52px] pb-[30px] md:pb-[48px]">
-              <!-- The SVG Bubble Wrapper -->
-              <div class="absolute inset-0 pointer-events-none">
-                <img src={textBubble} alt="" class="w-full h-full object-fill" />
-              </div>
+          <div class="testimonial-card flex-shrink-0 w-[280px] md:w-[606px] snap-center flex flex-col gap-[40px] md:gap-[48px] items-start transition-opacity duration-300">
+            <!-- Dynamic Bubble Container -->
+            <div class="relative w-full border-2 border-[#B9FF66] rounded-[45px] px-[30px] md:px-[52px] py-[30px] md:py-[48px] min-h-[160px] flex items-center">
               
               <!-- Testimonial Text -->
-              <p class="relative z-10 m-0 font-sans font-normal text-[14px] md:text-[18px] leading-[20px] md:leading-[23px] text-white text-center md:text-left max-w-[502px]">
+              <p class="relative z-10 m-0 font-sans font-normal text-[14px] md:text-[18px] leading-[20px] md:leading-[23px] text-white text-center md:text-left">
                 "{t.text}"
               </p>
+
+              <!-- SVG Tail - Integrated dynamically -->
+              <div class="absolute -bottom-[28px] left-[50px] md:left-[60px] w-[53px] h-[28px]">
+                <svg width="53" height="28" viewBox="0 0 53 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <!-- Masking the border of the box behind the tail -->
+                  <path d="M0 0H53V2H0V0Z" fill="#191A23" />
+                  <!-- The Tail Shape -->
+                  <path d="M26.5 28L0 0H53L26.5 28Z" fill="#191A23" />
+                  <!-- The Tail Border (only sides) -->
+                  <path d="M0 0L26.5 28L53 0" stroke="#B9FF66" stroke-width="2" />
+                </svg>
+              </div>
             </div>
 
             <!-- Author Info -->
@@ -131,13 +139,24 @@ const testimonials = [
 
     const updateUI = () => {
       const scrollLeft = container.scrollLeft;
+      const containerWidth = container.offsetWidth;
       const scrollWidth = container.scrollWidth;
-      const clientWidth = container.clientWidth;
       
-      // Calculate active index based on snap positions
-      const card = container.querySelector('.testimonial-card');
-      const cardWidth = card.offsetWidth + parseInt(getComputedStyle(container).gap);
-      const activeIndex = Math.round(scrollLeft / cardWidth);
+      // Calculate active index based on which card's center is closest to container center
+      const cards = container.querySelectorAll('.testimonial-card');
+      let activeIndex = 0;
+      let minDistance = Infinity;
+
+      cards.forEach((card, i) => {
+        const cardCenter = card.offsetLeft + (card.offsetWidth / 2);
+        const containerCenter = scrollLeft + (containerWidth / 2);
+        const distance = Math.abs(cardCenter - containerCenter);
+        
+        if (distance < minDistance) {
+          minDistance = distance;
+          activeIndex = i;
+        }
+      });
 
       // Update Dots
       dots.forEach((dot, i) => {
@@ -147,14 +166,22 @@ const testimonials = [
       });
 
       // Update Arrows Opacity/Disabled State
-      if (prevBtn) prevBtn.disabled = scrollLeft <= 5;
-      if (nextBtn) nextBtn.disabled = scrollLeft + clientWidth >= scrollWidth - 5;
+      // Use a small buffer for precision
+      if (prevBtn) prevBtn.disabled = activeIndex === 0;
+      if (nextBtn) nextBtn.disabled = activeIndex === cards.length - 1;
     };
 
     // Custom smooth scroll function with duration
-    const smoothScrollTo = (target, duration) => {
+    const smoothScrollTo = (index, duration) => {
+      const cards = container.querySelectorAll('.testimonial-card');
+      const targetCard = cards[index];
+      if (!targetCard) return;
+
+      const containerWidth = container.offsetWidth;
+      const targetScrollLeft = targetCard.offsetLeft - (containerWidth / 2) + (targetCard.offsetWidth / 2);
+      
       const start = container.scrollLeft;
-      const change = target - start;
+      const change = targetScrollLeft - start;
       const startTime = performance.now();
       
       // Temporarily disable snap to allow smooth JS animation
@@ -181,26 +208,45 @@ const testimonials = [
       requestAnimationFrame(animateScroll);
     };
 
-    const getCardWidth = () => {
-      const card = container.querySelector('.testimonial-card');
-      return card.offsetWidth + parseInt(getComputedStyle(container).gap);
+    const getCurrentIndex = () => {
+      const scrollLeft = container.scrollLeft;
+      const containerWidth = container.offsetWidth;
+      const cards = container.querySelectorAll('.testimonial-card');
+      let activeIndex = 0;
+      let minDistance = Infinity;
+
+      cards.forEach((card, i) => {
+        const cardCenter = card.offsetLeft + (card.offsetWidth / 2);
+        const containerCenter = scrollLeft + (containerWidth / 2);
+        const distance = Math.abs(cardCenter - containerCenter);
+        if (distance < minDistance) {
+          minDistance = distance;
+          activeIndex = i;
+        }
+      });
+      return activeIndex;
     };
 
     // Click navigation
     prevBtn?.addEventListener('click', () => {
-      const target = container.scrollLeft - getCardWidth();
-      smoothScrollTo(target, 500); // 0.5s
+      const currentIndex = getCurrentIndex();
+      if (currentIndex > 0) {
+        smoothScrollTo(currentIndex - 1, 500);
+      }
     });
 
     nextBtn?.addEventListener('click', () => {
-      const target = container.scrollLeft + getCardWidth();
-      smoothScrollTo(target, 500); // 0.5s
+      const currentIndex = getCurrentIndex();
+      const cards = container.querySelectorAll('.testimonial-card');
+      if (currentIndex < cards.length - 1) {
+        smoothScrollTo(currentIndex + 1, 500);
+      }
     });
 
     // Dot click
     dotBtns.forEach((btn, i) => {
       btn.addEventListener('click', () => {
-        smoothScrollTo(i * getCardWidth(), 500);
+        smoothScrollTo(i, 500);
       });
     });
 
@@ -223,11 +269,14 @@ const testimonials = [
   }
   
   /* Centering the slider content so first/last cards can be centered with siblings visible */
+  #testimonial-container {
+    /* (Full Container Width - Single Card Width) / 2 */
+    padding-left: calc(50% - 140px);
+    padding-right: calc(50% - 140px);
+  }
+
   @media (min-width: 768px) {
     #testimonial-container {
-      /* Padding calculation: (Full Container Width - Single Card Width) / 2 */
-      /* Full width is 1240px (at max-w 1440 - 200 padding) */
-      /* Single card is 606px. Gap is 50px. */
       padding-left: calc(50% - 303px);
       padding-right: calc(50% - 303px);
     }
