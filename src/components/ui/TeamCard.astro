@@ -33,9 +33,11 @@ const clipId = `team-clip-${name.replace(/\s+/g, "-").toLowerCase()}`;
     style="box-shadow: 0px 5px 0px #191A23;"
 >
     <!-- Top: Info and Image -->
-    <div class="flex flex-row items-end justify-between relative h-[103px]">
+    <div class="flex flex-row items-end justify-between relative min-h-[103px]">
         <!-- Left Group: Picture + Name/Role -->
-        <div class="flex flex-row items-end gap-[20px]">
+        <div
+            class="flex flex-row md:flex-col lg:flex-col xl:flex-row items-end md:items-start lg:items-start xl:items-end gap-[15px] xl:gap-[20px] flex-1 min-w-0"
+        >
             <!-- Picture Container — Figma: total bounds approx 105x103 -->
             <div class="relative w-[106px] h-[103px] shrink-0 overflow-visible">
                 <TeamImageMask id={clipId} />
@@ -73,9 +75,11 @@ const clipId = `team-clip-${name.replace(/\s+/g, "-").toLowerCase()}`;
             </div>
 
             <!-- Name and Role -->
-            <div class="flex flex-col mb-[5px]">
+            <div
+                class="flex flex-col mb-[5px] min-w-0 pr-[35px] md:pr-0 xl:pr-0"
+            >
                 <h4
-                    class="m-0 font-sans font-medium text-[20px] leading-[26px] text-black whitespace-nowrap"
+                    class="m-0 font-sans font-medium text-[20px] leading-[26px] text-black"
                 >
                     {name}
                 </h4>
@@ -88,7 +92,7 @@ const clipId = `team-clip-${name.replace(/\s+/g, "-").toLowerCase()}`;
         </div>
 
         <!-- LinkedIn Icon -->
-        <a href="#" class="absolute top-0 right-0 shrink-0">
+        <a href="#" class="absolute top-0 right-0 shrink-0 z-20">
             <img src={linkedin} alt="LinkedIn" class="w-[34px] h-[34px]" />
         </a>
     </div>
